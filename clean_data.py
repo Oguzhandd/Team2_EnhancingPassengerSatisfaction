@@ -26,10 +26,12 @@ df2 = df2.dropna()
 # print("\n\n")
 print("Total dataset: " + str(len(df1) + len(df2)))
 
-#return cleaned data of test set
+
+# return cleaned data of test set
 def clean_data_test():
     return df1
 
-#return cleaned data of train set
+
+# return cleaned data of train set
 def clean_data_train():
     return df2
