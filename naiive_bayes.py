@@ -1,6 +1,7 @@
 from sklearn import preprocessing
 import pandas as pd
 import matplotlib.pyplot as plt
+from preprocessing_data import processed_data_test, processed_data_train
 from clean_data import clean_data_test, clean_data_train
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
@@ -8,18 +9,16 @@ import sklearn.metrics
 import time
 
 
-train = clean_data_train()
-test = clean_data_test()
+train = processed_data_train()
+test = processed_data_test()
 
 #Importance of feature using Wrapper Method
 
-features = ['Type_of_Travel','Inflight_wifi_service','Online_boarding','Seat_comfort','Flight_Distance',
-               'Inflight_entertainment','On-board_service','Leg_room_service','Cleanliness','Checkin_service', 
-               'Inflight_service', 'Baggage_handling']
 
-def NB(features):
+
+def NB(Features):
     # Build model
-    
+    features = Features
     target = ['satisfaction']
 
     # Test and train
@@ -65,7 +64,9 @@ def NB(features):
 
 
 
-
+features = ['Type_of_Travel','Inflight_wifi_service','Online_boarding','Seat_comfort','Flight_Distance',
+               'Inflight_entertainment','On-board_service','Leg_room_service','Cleanliness','Checkin_service', 
+               'Inflight_service', 'Baggage_handling']
 
 ac, roc, tt = NB(features)
 print("Accuracy of Naiive Bayes .", ac)
