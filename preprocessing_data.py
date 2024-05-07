@@ -1,10 +1,5 @@
 import clean_data
 from sklearn.preprocessing import LabelEncoder
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import cv2
-
 
 train = clean_data.clean_data_train()
 test = clean_data.clean_data_test()
@@ -26,7 +21,8 @@ Q3 = train.quantile(0.75)
 IQR = Q3 - Q1
 
 # Removal of outliers from dataset
-train = train[~((train < (Q1 - 1.5 * IQR)) |(train > (Q3 + 1.5 * IQR))).any(axis=1)]
+train = train[~((train < (Q1 - 1.5 * IQR)) | (train > (Q3 + 1.5 * IQR))).any(axis=1)]
+
 
 def processed_data_train():
     return train
@@ -35,3 +31,19 @@ def processed_data_train():
 # return cleaned data of test set
 def processed_data_test():
     return test
+
+
+def split_to_train_test(train, test, features, target):
+    train_cleaned = train
+    test_cleaned = test
+
+    features = features
+
+    target = target  # Target variable
+
+    X_train = train_cleaned[features]
+    y_train = train_cleaned[target].to_numpy()  # Convert Series to NumPy array
+    X_test = test_cleaned[features]
+    y_test = test_cleaned[target].to_numpy()  # Convert Series to NumPy array
+
+    return X_train, y_train, X_test, y_test

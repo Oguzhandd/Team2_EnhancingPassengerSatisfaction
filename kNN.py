@@ -4,12 +4,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 import sklearn.metrics
 import matplotlib.pyplot as plt
+import airline_services
 
 def clean_and_select_features(train, test):
     train_cleaned = clean_data_train()
     test_cleaned = clean_data_test()
 
-    features = ['Online_boarding', 'Inflight_wifi_service', 'Baggage_handling', 'Inflight_entertainment']
+    features = airline_services
 
     target = 'satisfaction'  # Target variable
 
