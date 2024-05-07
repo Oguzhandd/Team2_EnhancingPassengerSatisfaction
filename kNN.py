@@ -5,7 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 import sklearn.metrics
 import matplotlib.pyplot as plt
 
-# Function to clean the dataset and select features
+# Function to clean th e dataset and select features
 def clean_and_select_features(train, test):
     # Clean the dataset
     train_cleaned = clean_data_train()
