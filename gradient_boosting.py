@@ -1,4 +1,13 @@
 from sklearn.ensemble import GradientBoostingClassifier
-from forward_selection import forward_feature_selection
 
-gb_model = forward_feature_selection(GradientBoostingClassifier(n_estimators=100))
+from airline_services import services
+from clean_data import clean_data_train, clean_data_test
+from forward_selection import forward_feature_selection
+from preprocessing_data import split_to_train_test
+
+features = services
+x_train, y_train, x_test, y_test = split_to_train_test(clean_data_train(), clean_data_test(), features, 'satisfaction')
+gb_model = forward_feature_selection(GradientBoostingClassifier(n_estimators=10))
+gb_model = gb_model.fit(x_train, y_train)
+
+print(gb_model.get_feature_names_out())
