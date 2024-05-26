@@ -36,7 +36,7 @@ def select(model):
             current_features = selected_features + [feature]
             X_train_subset = X_train[:, current_features]
             
-            # Modeli eğit ve doğruluğu ölç
+            # Train model 
             model.fit(X_train_subset, y_train)
             y_pred = model.predict(X_train_subset)
             accuracy = accuracy_score(y_train, y_pred)
@@ -45,7 +45,7 @@ def select(model):
                 best_accuracy = accuracy
                 best_feature = feature
         
-        # En iyi özelliği seç
+        # Select best feature
         selected_features.append(best_feature)
         remaining_features.remove(best_feature)
 
@@ -54,10 +54,11 @@ def select(model):
     X_train_selected = X_train[:, selected_features]
     X_test_selected = X_test[:, selected_features]
 
-    # Modeli yeniden eğit
+    # Retrain model
     model.fit(X_train_selected, y_train)
     y_pred = model.predict(X_test_selected)
 
-    # Doğruluğu hesapla
+    # Calculate accuracy
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Test Accuracy with selected features: {accuracy}")
+
