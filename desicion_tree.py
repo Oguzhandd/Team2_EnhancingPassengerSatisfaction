@@ -4,8 +4,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from clean_data import clean_data_train, clean_data_test  # Functions for data cleaning
 
+
 def select_features(df):
     return df[['Online_boarding', 'Inflight_wifi_service', 'Baggage_handling', 'Inflight_entertainment']]
+
 
 df_train_cleaned = clean_data_train()
 df_test_cleaned = clean_data_test()

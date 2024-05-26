@@ -3,6 +3,7 @@ from sklearn.model_selection import StratifiedKFold
 
 
 def forward_feature_selection(classifier):
+    # stratified sampling of 10-fold cross-validation
     sfK = StratifiedKFold(n_splits=10, random_state=42, shuffle=True)
 
     sfs = SFS(

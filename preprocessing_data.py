@@ -1,8 +1,9 @@
-import clean_data
+from airline_services import services
+from clean_data import *
 from sklearn.preprocessing import LabelEncoder
 
-train = clean_data.clean_data_train()
-test = clean_data.clean_data_test()
+train = clean_data_train()
+test = clean_data_test()
 
 # For Train set
 lencoders = {}
@@ -40,6 +41,22 @@ def split_to_train_test(train, test, features, target):
     features = features
 
     target = target  # Target variable
+
+    X_train = train_cleaned[features]
+    y_train = train_cleaned[target].to_numpy()  # Convert Series to NumPy array
+    X_test = test_cleaned[features]
+    y_test = test_cleaned[target].to_numpy()  # Convert Series to NumPy array
+
+    return X_train, y_train, X_test, y_test
+
+
+def clean_and_select_features():
+    train_cleaned = clean_data_train()
+    test_cleaned = clean_data_test()
+
+    features = services
+
+    target = 'satisfaction'  # Target variable
 
     X_train = train_cleaned[features]
     y_train = train_cleaned[target].to_numpy()  # Convert Series to NumPy array
