@@ -48,19 +48,3 @@ def split_to_train_test(train, test, features, target):
     y_test = test_cleaned[target].to_numpy()  # Convert Series to NumPy array
 
     return X_train, y_train, X_test, y_test
-
-
-def clean_and_select_features():
-    train_cleaned = clean_data_train()
-    test_cleaned = clean_data_test()
-
-    features = services
-
-    target = 'satisfaction'  # Target variable
-
-    X_train = train_cleaned[features]
-    y_train = train_cleaned[target].to_numpy()  # Convert Series to NumPy array
-    X_test = test_cleaned[features]
-    y_test = test_cleaned[target].to_numpy()  # Convert Series to NumPy array
-
-    return X_train, y_train, X_test, y_test
