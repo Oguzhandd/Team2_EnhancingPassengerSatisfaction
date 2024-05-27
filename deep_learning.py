@@ -42,7 +42,7 @@ if __name__ == "__main__":
     df_test_cleaned = clean_data_test()
 
     X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test_cleaned, services, 'satisfaction')
-    #forward selection
+    #forward selection.
     forward_selector = forward_feature_selection(classifier=RandomForestClassifier())
     forward_selector = forward_selector.fit(X_train, y_train)
 
