@@ -6,6 +6,7 @@ from airline_services import services
 from forward_selection import forward_feature_selection
 from preprocessing_data import split_to_train_test
 from clean_data import clean_data_train, clean_data_test
+
 def deep_learning(X_train, y_train, X_test, y_test, features):
     model = Sequential()
     model.add(Dense(64, input_shape=(len(features),), activation='relu'))
@@ -27,3 +28,17 @@ def deep_learning(X_train, y_train, X_test, y_test, features):
 
     print("Classification Report for Test Set:")
     print(classification_report(y_test, y_pred_test))
+
+
+if __name__ == "__main__":
+    df_train_cleaned = clean_data_train()
+    df_test_cleaned = clean_data_test()
+
+    X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test_cleaned, services, 'satisfaction')
+
+    selected_features = ['Inflight wifi service', 'Ease of Online booking', 'Seat comfort', 'Inflight entertainment']
+
+    X_train_selected = X_train[selected_features]
+    X_test_selected = X_test[selected_features]
+
+    deep_learning(X_train_selected, y_train, X_test_selected, y_test, selected_features)
