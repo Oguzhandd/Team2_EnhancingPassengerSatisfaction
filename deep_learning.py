@@ -8,6 +8,8 @@ from forward_selection import forward_feature_selection
 from clean_data import clean_data_train, clean_data_test
 from preprocessing_data import split_to_train_test
 from airline_services import services
+from random_forest import x_train
+
 
 def deep_learning(X_train, y_train, X_test, y_test, features):
     model = Sequential()
@@ -53,3 +55,7 @@ if __name__ == "__main__":
     X_test_selected = X_test[selected_features]
 
     deep_learning(X_train_selected, y_train, X_test_selected, y_test, selected_features)
+
+    deep_learning = RandomForestClassifier(n_estimators=10)
+    deep_learning.fit(x_train, y_train)
+    y_pred = deep_learning.predict(x_train)
