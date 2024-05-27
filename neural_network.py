@@ -16,7 +16,8 @@ params_nn = {'hidden_layer_sizes': (30,30,30),
 
 neuralnet = forward_feature_selection(MLPClassifier(**params_nn))
 neuralnet = neuralnet.fit(X_train,y_train)
-print(neuralnet.get_feature_names_out())
+selected_features = neuralnet.get_feature_names_out()
+print(selected_features)
 
 x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
                                                        df_test_cleaned, selected_features, 'satisfaction')
