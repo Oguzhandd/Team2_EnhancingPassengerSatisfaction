@@ -12,4 +12,12 @@ X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test
 
 decision_tree = forward_feature_selection(DecisionTreeClassifier())
 decision_tree = decision_tree.fit(X_train, y_train)
-print(decision_tree.get_feature_names_out())
+selected_features = decision_tree.get_feature_names_out()
+
+print(selected_features)
+
+x_train, y_train, x_test, y_test = split_to_train_test(clean_data_train(),
+                                                       clean_data_test(), selected_features, 'satisfaction')
+model = DecisionTreeClassifier()
+model.fit(x_train, y_train)
+y_pred = model.predict(x_train)

@@ -1,7 +1,4 @@
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
-import sklearn.metrics
 from forward_selection import forward_feature_selection
 from clean_data import clean_data_train, clean_data_test
 from airline_services import services
@@ -9,14 +6,15 @@ from airline_services import services
 from preprocessing_data import split_to_train_test
 
 
-def build_and_evaluate_model(X_train, y_train, X_test, y_test, k):
-
-    model = forward_feature_selection(KNeighborsClassifier(n_neighbors=k))
-    model.fit(X_train, y_train)
-    print(model.get_feature_names_out())
-
-
 X_train, y_train, X_test, y_test = split_to_train_test(clean_data_train(), clean_data_test(), services, 'satisfaction')
+model = forward_feature_selection(KNeighborsClassifier(n_neighbors=10))
+model = model.fit(X_train, y_train)
+selected_features = model.get_feature_names_out()
 
-k = 10  # Number of neighbors in KNN
-build_and_evaluate_model(X_train, y_train, X_test, y_test, k)
+print(selected_features)
+
+x_train, y_train, x_test, y_test = split_to_train_test(clean_data_train(),
+                                                       clean_data_test(), selected_features, 'satisfaction')
+model = KNeighborsClassifier(n_neighbors=10)
+model.fit(x_train, y_train)
+y_pred = model.predict(x_train)
