@@ -16,6 +16,13 @@ naiive_bayes = forward_feature_selection(model)
 naiive_bayes.fit(X_train,y_train)
 print(naiive_bayes.get_feature_names_out())
 
+
+x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
+                                                       df_test_cleaned, selected_features, 'satisfaction')
+
+nb = GaussianNB(**params_nb)
+nb.fit(x_train, y_train)
+y_pred = nb.predict(x_train)
    
 
      
