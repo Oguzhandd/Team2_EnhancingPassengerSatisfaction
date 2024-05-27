@@ -1,6 +1,5 @@
 from sklearn.neural_network import MLPClassifier
-from sklearn.tree import DecisionTreeClassifier
-from clean_data import clean_data_train, clean_data_test  # Functions for data cleaning
+from clean_data import clean_data_train, clean_data_test 
 from preprocessing_data import split_to_train_test
 from airline_services import services
 from forward_selection import forward_feature_selection
