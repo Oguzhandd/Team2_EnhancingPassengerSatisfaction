@@ -2,6 +2,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score, classification_report
 from airline_services import services
+from desicion_tree import x_train, y_train
 from preprocessing_data import split_to_train_test
 from clean_data import clean_data_train, clean_data_test
 from forward_selection import forward_feature_selection
@@ -54,5 +55,6 @@ if __name__ == "__main__":
     X = df_combined.drop(columns=['satisfaction'])
     y = df_combined['satisfaction']
 
-    rule_induction(X, y)
-
+    rule_induction = DecisionTreeClassifier()
+    rule_induction.fit(x_train, y_train)
+    y_pred = rule_induction.predict(x_train)
