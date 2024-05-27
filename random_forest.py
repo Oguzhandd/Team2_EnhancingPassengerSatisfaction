@@ -3,7 +3,6 @@ from forward_selection import forward_feature_selection
 from clean_data import clean_data_test, clean_data_train
 from preprocessing_data import split_to_train_test
 from airline_services import services
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 features = services
 x_train, y_train, x_test, y_test = split_to_train_test(clean_data_train(), clean_data_test(), features, 'satisfaction')
