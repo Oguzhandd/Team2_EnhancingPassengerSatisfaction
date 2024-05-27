@@ -1,76 +1,20 @@
-from sklearn import preprocessing
-import pandas as pd
-import matplotlib.pyplot as plt
-from preprocessing_data import processed_data_test, processed_data_train
-from clean_data import clean_data_test, clean_data_train
-from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
-import sklearn.metrics
-import time
+from clean_data import clean_data_train, clean_data_test  # Functions for data cleaning
+from preprocessing_data import split_to_train_test
+from airline_services import services
+from forward_selection import forward_feature_selection
 
+df_train_cleaned = clean_data_train()
+df_test_cleaned = clean_data_test()
 
-train = processed_data_train()
-test = processed_data_test()
+X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test_cleaned, services, 'satisfaction')
 
-#Importance of feature using Wrapper Method
+params_nb = {}
 
-
-
-def NB(Features):
-    # Build model
-    features = Features
-    target = ['satisfaction']
-
-    # Test and train
-    X_train = train[features]
-    y_train = train[target].to_numpy()
-    X_test = test[features]
-    y_test = test[target].to_numpy()
-
-    # Normalize Features
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.fit_transform(X_test)
-
-    params_nb = {}
-
-    model = GaussianNB(**params_nb)
-
-    verbose=True
-    t0=time.time()
-    if verbose == False:
-        model.fit(X_train,y_train.ravel(), verbose=0)
-    else:
-        model.fit(X_train,y_train.ravel())
-    y_pred = model.predict(X_test)
-    accuracy = sklearn.metrics.accuracy_score(y_test, y_pred)
-    roc_auc = sklearn.metrics.roc_auc_score(y_test, y_pred) 
-    time_taken = time.time()-t0
-
-
-    # Plot ROC Curve
-    y_probs = model.predict_proba(X_test)[:, 1]
-    fpr, tpr, thresholds = sklearn.metrics.roc_curve(y_test, y_probs)
-    plt.figure(figsize=(8, 6))
-    plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.2f})')
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver Operating Characteristic (ROC) Curve')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
-    
-    return accuracy, roc_auc, time_taken
-
-
-
-features = ['Type_of_Travel','Inflight_wifi_service','Online_boarding','Seat_comfort','Flight_Distance',
-               'Inflight_entertainment','On-board_service','Leg_room_service','Cleanliness','Checkin_service', 
-               'Inflight_service', 'Baggage_handling']
-
-ac, roc, tt = NB(features)
-print("Accuracy of Naiive Bayes .", ac)
-    
+model = GaussianNB(**params_nb)
+naiive_bayes = forward_feature_selection(model)
+naiive_bayes.fit(X_train,y_train)
+print(naiive_bayes.get_feature_names_out())
 
    
 
