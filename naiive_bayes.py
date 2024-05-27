@@ -14,7 +14,8 @@ params_nb = {}
 model = GaussianNB(**params_nb)
 naiive_bayes = forward_feature_selection(model)
 naiive_bayes.fit(X_train,y_train)
-print(naiive_bayes.get_feature_names_out())
+selected_features = naiive_bayes.get_feature_names_out()
+print(selected_features)
 
 
 x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
