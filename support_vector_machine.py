@@ -11,7 +11,8 @@ X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test
 
 sup_vec_machine = forward_feature_selection(svm.SVC())
 sup_vec_machine = sup_vec_machine.fit(X_train,y_train)
-print(sup_vec_machine.get_feature_names_out())
+selected_features = sup_vec_machine.get_feature_names_out()
+print(selected_features)
 
 x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
                                                        df_test_cleaned, selected_features, 'satisfaction')
