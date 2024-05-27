@@ -22,31 +22,6 @@ print('Precision of random forest tree: ', precision)
 print('Recall of random forest tree: ', recall)
 print('F1 score of random forest tree: ', f1)
 
-#Rule Induction
-ri = rule_induction
-accuracy = accuracy_score(ri.y_train, ri.y_pred)
-precision = precision_score(ri.y_train, ri.y_pred)
-recall = recall_score(ri.y_train, ri.y_pred)
-f1 = f1_score(ri.y_train, ri.y_pred)
-
-print('Accuracy of random forest tree: ', accuracy)
-print('Precision of random forest tree: ', precision)
-print('Recall of random forest tree: ', recall)
-print('F1 score of random forest tree: ', f1)
-
-#Deep Learning
-dl = deep_learning
-accuracy = accuracy_score(dl.y_train, dl.y_pred)
-precision = precision_score(dl.y_train, dl.y_pred)
-recall = recall_score(dl.y_train, dl.y_pred)
-f1 = f1_score(dl.y_train, dl.y_pred)
-
-print('Accuracy of random forest tree: ', accuracy)
-print('Precision of random forest tree: ', precision)
-print('Recall of random forest tree: ', recall)
-print('F1 score of random forest tree: ', f1)
-
-
 print('\n')
 # K-Nearest Neighbor (kNN)
 k = kNN
@@ -135,3 +110,26 @@ print('Precision of support_vector_machine: ', precision)
 print('Recall of support_vector_machine: ', recall)
 print('F1 score of support_vector_machine: ', f1)
 
+#Rule Induction
+ri = rule_induction
+accuracy = accuracy_score(ri.y_train, ri.y_pred)
+precision = precision_score(ri.y_train, ri.y_pred)
+recall = recall_score(ri.y_train, ri.y_pred)
+f1 = f1_score(ri.y_train, ri.y_pred)
+
+print('Accuracy of random forest tree: ', accuracy)
+print('Precision of random forest tree: ', precision)
+print('Recall of random forest tree: ', recall)
+print('F1 score of random forest tree: ', f1)
+
+#Deep Learning
+dl = deep_learning
+accuracy = accuracy_score(dl.y_train, dl.y_pred)
+precision = precision_score(dl.y_train, dl.y_pred)
+recall = recall_score(dl.y_train, dl.y_pred)
+f1 = f1_score(dl.y_train, dl.y_pred)
+
+print('Accuracy of random forest tree: ', accuracy)
+print('Precision of random forest tree: ', precision)
+print('Recall of random forest tree: ', recall)
+print('F1 score of random forest tree: ', f1)
