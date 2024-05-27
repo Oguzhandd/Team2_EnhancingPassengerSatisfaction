@@ -6,14 +6,6 @@ from preprocessing_data import split_to_train_test
 from clean_data import clean_data_train, clean_data_test
 from forward_selection import forward_feature_selection
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import accuracy_score, classification_report
-from airline_services import services
-from preprocessing_data import split_to_train_test
-from clean_data import clean_data_train, clean_data_test
-from forward_selection import forward_feature_selection
-import pandas as pd
 
 def rule_induction(X, y):
     decision_tree = DecisionTreeClassifier()
@@ -51,3 +43,16 @@ def rule_induction(X, y):
 
     print("Classification Report:")
     print(classification_report(y, y_pred))
+
+
+if __name__ == "__main__":
+    df_train_cleaned = clean_data_train()
+    df_test_cleaned = clean_data_test()
+
+    df_combined = pd.concat([df_train_cleaned, df_test_cleaned], ignore_index=True)
+
+    X = df_combined.drop(columns=['satisfaction'])
+    y = df_combined['satisfaction']
+
+    rule_induction(X, y)
+
