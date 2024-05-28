@@ -23,4 +23,4 @@ x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
                                                        df_test_cleaned, selected_features, 'satisfaction')
 nn = MLPClassifier(**params_nn)
 nn.fit(x_train, y_train)
-y_pred = nn.predict(x_train)
+y_pred = nn.predict(x_test)

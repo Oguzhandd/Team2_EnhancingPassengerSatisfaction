@@ -20,4 +20,4 @@ x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
                                                        df_test_cleaned, selected_features, 'satisfaction')
 gb_model = GradientBoostingClassifier(n_estimators=10)
 gb_model.fit(x_train, y_train)
-y_pred = gb_model.predict(x_train)
+y_pred = gb_model.predict(x_test)
