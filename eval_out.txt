@@ -1,0 +1,65 @@
+random_forest = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Gate location' 'Online boarding' 'Baggage handling']
+
+kNN = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Gate location' 'Online boarding' 'Inflight entertainment'
+ 'Leg room service' 'Inflight service']
+
+gradient_boosting = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Online boarding' 'Leg room service']
+
+decision_tree = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Gate location' 'Online boarding' 'Inflight service']
+
+naiive_bayes = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Online boarding' 'Inflight entertainment' 'Leg room service'
+ 'Checkin service']
+
+logistic_regression = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Online boarding' 'Inflight entertainment' 'On-board service'
+ 'Leg room service' 'Checkin service']
+
+support_vector_machine = ['Inflight wifi service' 'Departure/Arrival time convenient'
+ 'Online boarding' 'Inflight entertainment' 'On-board service'
+ 'Leg room service' 'Checkin service']
+
+Accuracy of random forest tree:  0.9202100953925771
+Precision of random forest tree:  0.936695782849629
+Recall of random forest tree:  0.8775186977562692
+F1 score of random forest tree:  0.9061421043067418
+
+
+Accuracy of kNN:  0.9222183601745646
+Precision of kNN:  0.9348088905421743
+Recall of kNN:  0.884469863616366
+F1 score of kNN:  0.9089429423998553
+
+
+Accuracy of gradient boosting:  0.842505696520295
+Precision of gradient boosting:  0.8856779930136551
+Recall of gradient boosting:  0.7362076550813902
+F1 score of gradient boosting:  0.8040553526811455
+
+
+Accuracy of decision tree:  0.9195149268141969
+Precision of decision tree:  0.9293181607919326
+Recall of decision tree:  0.8838539375274967
+F1 score of decision tree:  0.9060160548390006
+
+
+Accuracy of naiive bayes:  0.8284092225698065
+Precision of naiive bayes:  0.7970305526948164
+Recall of naiive bayes:  0.8171579410470744
+F1 score of naiive bayes:  0.8069687622192293
+
+
+Accuracy of logistic_regression:  0.8139265438535511
+Precision of logistic_regression:  0.7969160997732426
+Recall of logistic_regression:  0.7730752309722834
+F1 score of logistic_regression:  0.7848146493970523
+
+
+Accuracy of support_vector_machine:  0.8123817247904839
+Precision of support_vector_machine:  0.7926598902581632
+Recall of support_vector_machine:  0.7753629564452266
+F1 score of support_vector_machine:  0.7839160217062539
