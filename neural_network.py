@@ -9,10 +9,10 @@ df_test_cleaned = clean_data_test()
 
 X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test_cleaned, services, 'satisfaction')
 
-params_nn = {'hidden_layer_sizes': (30,30,30),
+params_nn = {'hidden_layer_sizes': (10,10,10),
              'activation': 'logistic',
              'solver': 'lbfgs',
-             'max_iter': 100}
+             'max_iter': 500,}
 
 neuralnet = forward_feature_selection(MLPClassifier(**params_nn))
 neuralnet = neuralnet.fit(X_train,y_train)

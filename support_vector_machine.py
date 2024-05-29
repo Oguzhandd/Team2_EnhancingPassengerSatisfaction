@@ -9,13 +9,13 @@ df_test_cleaned = clean_data_test()
 
 X_train, y_train, X_test, y_test = split_to_train_test(df_train_cleaned, df_test_cleaned, services, 'satisfaction')
 
-sup_vec_machine = forward_feature_selection(svm.SVC())
+sup_vec_machine = forward_feature_selection(svm.LinearSVC())
 sup_vec_machine = sup_vec_machine.fit(X_train,y_train)
 selected_features = sup_vec_machine.get_feature_names_out()
 print(selected_features)
 
 x_train, y_train, x_test, y_test = split_to_train_test(df_train_cleaned,
                                                        df_test_cleaned, selected_features, 'satisfaction')
-supvm = svm.SVC()
+supvm = svm.LinearSVC()
 supvm.fit(x_train, y_train)
 y_pred = supvm.predict(x_test)
